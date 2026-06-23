@@ -76,6 +76,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   geometry-latent kNN distance as a continuous score for downstream
   consumers (e.g. AL acquisition) without the boolean thresholding /
   warning emission of `OODGuard.check()`.
+- Adds rotary position embedding (RoPE) modules to `phyiscsnemo.nn` and
+  integrates support for 2D RoPE in the neighborhood attention backend
+  of `DiT` layers.
+- Adds support for RoPE, dynamic invalid-region masking, and a new
+  `ConvDetokenizer` in `phyiscsnemo.models.DiT`. Invalid regions are supplied
+  per forward call via the `invalid_mask` argument of `DiT.forward` (a
+  per-sample, batch-variable pixel mask, domain-parallel safe), replacing
+  flagged tokens with a learned mask token.
 - Adds an inference script (`src/infer.py` + `conf/infer.yaml`) to the
   Unified External Aero Recipe
   (`examples/cfd/external_aerodynamics/unified_external_aero_recipe`),
