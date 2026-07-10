@@ -155,6 +155,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Optimizes the production container build by consolidating related filesystem
+  operations, using BuildKit bind and cache mounts, and separating custom,
+  declared, and project dependency installation. Reduces total physicsnemo layers
+  by around 78%.
 - `ShardTensor.redistribute` now computes receive shapes analytically when
   sharding shapes are known, skipping the shape-negotiation `all_to_all`
   collective (falls back to the collective only when shapes are unavailable).
